@@ -15,8 +15,5 @@
 </p>
 
 <% @user.tweets.each do |tweet| %>
-    <div>
-        <p>@<%= @user.username %></p>
-    <p><%= tweet.message %></p>
-    </div>
+    <%= render 'layouts/tweet_card', tweet: tweet %>
 <% end %>

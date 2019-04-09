@@ -1,4 +1,5 @@
 #Things to do
+
 - paste in seed file
 ```
 require 'open-uri'
@@ -15,7 +16,7 @@ end
 
 
 def create_self
-    User.create!(name: 'Thomas DeFelice', username: 'ThomasArch', bio: "It's me!", location: 'Asheville', email: "thomasarch@gmail.com", password: '111111')
+    User.create!(name: 'Default User', username: 'default', bio: "It's me!", location: 'Asheville', email: "user@default.com", password: '111111')
 end
 
 
@@ -23,10 +24,10 @@ def fill_character_array(number)
     character_array = []
 
     until character_array.count == number
-        character = Faker::TwinPeaks.character
+        character = Faker::TvShows::TwinPeaks.character
         character_array.push(character) unless character_array.include?(character)
     end    
-    p "created #{character_array}"
+    character_array
 end
 
 
@@ -42,8 +43,8 @@ def create_characters(character_array)
         User.create!(
             name: name, 
             username: username, 
-            bio: Faker::TwinPeaks.quote, 
-            location: Faker::TwinPeaks.location, 
+            bio: Faker::TvShows::TwinPeaks.quote, 
+            location: Faker::TvShows::TwinPeaks.location, 
             email: "#{username}@tp.com", 
             password: "111111", 
             autopic: "autopics/#{username}.png", 
@@ -74,6 +75,35 @@ character_array = fill_character_array(10)
 create_characters(character_array)
 ```
 
-install gems
+
+
+#install gems
 - nokogiri
 - faker
+
+
+
+#create folder - app/assets/images/autopics
+
+
+
+#create migration file
+- add bot:boolean, autopic:string to users
+
+
+
+# run rails db:seed
+
+
+
+#create helper method
+```
+def random_tweet
+  user_id = User.where(bot: true).sample.id
+  message = Faker::TvShows::TwinPeaks.quote
+  Tweet.create!(message: message, user_id: user_id)
+end
+ ```
+
+
+# put <%= random_tweet %> somewhere

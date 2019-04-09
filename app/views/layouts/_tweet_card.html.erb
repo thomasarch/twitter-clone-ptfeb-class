@@ -1,0 +1,11 @@
+<div class="tweet-container">
+	<div class="tweet-heading">
+		<strong><%= link_to tweet.user.name, show_user_path(id: tweet.user.id) %></strong>
+		<span class="check">✅</span> 
+		<span class="text-muted">
+			@<%= tweet.user.username %> 
+			• <%= time_ago_in_words(tweet.created_at) %>
+		</span>
+	</div>
+	<p><%= tweet.message %></p>
+</div>
