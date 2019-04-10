@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :message %>
-    <%= form.text_field :message %>
+    <%= form.text_field :message, placeholder: "What's happening?", class: 'tweet-input' %>
   </div>
 
   <div class="field">
@@ -21,6 +20,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Tweet', class: 'btn btn-primary' %>
   </div>
 <% end %>

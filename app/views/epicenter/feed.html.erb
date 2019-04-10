@@ -1,6 +1,6 @@
-<h1>@<%= current_user.username %>'s Twitter Feed</h1>
-<p>Here is what your "friends" are saying:</p>
-
+<div class="tweet-box">
+	<%= render 'tweets/form', tweet: @tweet %>
+</div>
 
 <div>
     <% @following_tweets.each do |tweet| %>

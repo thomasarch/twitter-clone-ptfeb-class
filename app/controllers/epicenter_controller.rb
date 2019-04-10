@@ -2,6 +2,7 @@ class EpicenterController < ApplicationController
   before_action :authenticate_user!
   
   def feed
+    @tweet = Tweet.new
     @following_tweets = []
 
     Tweet.all.each do |tweet|
