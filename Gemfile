@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
+gem 'nokogiri'
+gem 'faker'
+
 gem 'devise'
 gem 'carrierwave'
 gem 'bootstrap-sass'
