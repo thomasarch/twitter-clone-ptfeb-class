@@ -19,5 +19,14 @@
 @import 'font-awesome';
 
 body {
-	background-color: #e6ecf0;
+  background-color: #e6ecf0;
+}
+
+.rounded-img {
+  border-radius: 50%;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  object-fit: cover;  
 }

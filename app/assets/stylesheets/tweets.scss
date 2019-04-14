@@ -4,24 +4,34 @@
 
 
 .tweet-container {
-	background-color: white;
-	width: 580px;
-	padding: 8px 12px 8px 58px;
-	margin-bottom: 1px;
+  background-color: white;
+  width: 580px;
+  padding: 12px;
+  margin-bottom: 1px;
+}
+
+.tweet-content {
+  margin-left: 58px;
+}
+
+.tweet-container .profile-pic {
+  position: absolute;
+  margin-left: -58px;
+  margin-top: -6px;
 }
 
 .check {
-	position: relative;
-	top: -3px;
-	font-size: 8px;
+  position: relative;
+  top: -3px;
+  font-size: 8px;
 }
 
 .tweet-input {
-	width: 400px;
-	margin-right: 24px;
-	padding: 6px 10px;
-	border-radius: 8px;
-	border: 2px solid #1da1f2;
+  width: 380px;
+  margin: 0 24px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 2px solid #1da1f2;
 }
 
 textarea, select, input, button { outline: none; }
