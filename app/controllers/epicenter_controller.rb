@@ -7,13 +7,7 @@ class EpicenterController < ApplicationController
 
   def feed
     @tweet = Tweet.new
-    @following_tweets = []
-
-    Tweet.all.each do |tweet|
-      if current_user.following.include?(tweet.user_id) || current_user.id == tweet.user_id
-        @following_tweets.push(tweet)
-      end
-    end
+    @following_tweets = Tweet.where(user_id: current_user.following).order(created_at: :desc)
   end
 
   def show_user

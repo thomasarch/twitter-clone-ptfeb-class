@@ -2,11 +2,56 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.main {
+	width: 590px;
+	float: left;
+	margin: 0 10px;
+}
+
 .tweet-box, .tweet-box form {
+  width: 100%;
   display: flex;
   padding: 8px 0;
   justify-content: center;
   align-items: center;
-  width: 580px;
   background-color: #E8F5FD;
+}
+
+.dashboard {
+	float: left;
+	width: 290px;
+}
+
+.user-card {
+	background: white;
+	padding: 0 0 12px 0;
+}
+
+.profile-info-container {
+	position: relative;
+}
+
+.profile-names-container {
+	margin: 12px 12px 12px 96px;
+}
+
+.profile-stats-container {
+	display: flex;
+	justify-content: space-around;
+}
+
+.user-card > div:first-child {
+	background-color: #1b95e0;
+	height: 95px;
+}
+
+.user-card img {
+	position: absolute;
+	top: -46px;
+	left: 10px;
+}
+
+.wrapper {
+	margin: 0 auto;
+	// width: 800px;
 }

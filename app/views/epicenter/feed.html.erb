@@ -1,11 +1,47 @@
 <% random_tweet %>
+	<div class="wrapper">
+		<div class="dashboard">
+			<div class="user-card">
+				<div></div>
+				<div class="profile-info-container">
+					<%= image_tag profile_pic(current_user), size: 72, class: 'profile-pic' %>
+					<div class="profile-names-container">
+						<div><strong><%= current_user.name %></strong></div>
+						<div class="text-muted">@<%= current_user.username %></div>
+					</div>
+					<div class="profile-stats-container text-muted">
+						<div>
+							<p>Tweets</p>
+							<%= current_user.tweets.count %>
+						</div>
+						<div>
+							<p>Following</p>
+							<%= current_user.following.length %>
+						</div>
+						<div>
+							<p>Followers</p>
+							<%= get_users_followers %>
+						</div>
+					</div>
+ 				</div>
+			</div>
+		</div>
 
-<div class="tweet-box">
-	<%= render 'tweets/form', tweet: @tweet %>
-</div>
 
-<div>
-    <% @following_tweets.each do |tweet| %>
-    	<%= render 'layouts/tweet_card', tweet: tweet %>
-    <% end %>
+		<div class="main">
+			<div class="tweet-box">
+				<%= render 'tweets/form', tweet: @tweet %>
+			</div>
+
+			<div>
+			    <% @following_tweets.each do |tweet| %>
+			    	<%= render 'layouts/tweet_card', tweet: tweet %>
+			    <% end %>
+			</div>
+		</div>
+		
+		<div class="dashboard dashboard-right">
+			hello again
+		</div>
+	</div>
 </div>
