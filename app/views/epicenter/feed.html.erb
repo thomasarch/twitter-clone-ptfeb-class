@@ -14,14 +14,17 @@
 							<p>Tweets</p>
 							<%= current_user.tweets.count %>
 						</div>
-						<div>
+						
+						<%= link_to following_path(id: current_user.id) do %>
 							<p>Following</p>
 							<%= current_user.following.length %>
-						</div>
-						<div>
+						<% end %>
+
+						<%= link_to followers_path(id: current_user.id) do %>
 							<p>Followers</p>
-							<%= get_users_followers %>
-						</div>
+							<%= get_users_followers(current_user) %>
+						<% end %>
+						
 					</div>
  				</div>
 			</div>
@@ -35,7 +38,12 @@
 
 			<div>
 			    <% @following_tweets.each do |tweet| %>
-			    	<%= render 'layouts/tweet_card', tweet: tweet %>
+			    	<% if tweet.retweet.nil? %>
+			    		<%= render 'layouts/tweet_card', tweet: tweet %>
+			    	<% else %>	
+			    		<% tweet = Tweet.find(tweet.retweet) %>
+			    		<%= render 'layouts/tweet_card', tweet: tweet %>
+					<% end %>
 			    <% end %>
 			</div>
 		</div>

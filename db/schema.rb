@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_005756) do
+ActiveRecord::Schema.define(version: 2019_04_15_220153) do
 
   create_table "tags", force: :cascade do |t|
     t.string "phrase"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_005756) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "link"
+    t.integer "retweet"
   end
 
   create_table "users", force: :cascade do |t|

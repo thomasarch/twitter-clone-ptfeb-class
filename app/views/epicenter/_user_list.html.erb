@@ -1,0 +1,51 @@
+<div class="row">
+  <% @users.each do |user| %>
+    <div class="col-md-3">
+      <div class="well user-list-wells">
+        <div class="row">
+          <div class="col-md-6">
+            <%= image_tag profile_pic(user), size: 76, class: 'profile-pic' %>
+          </div>
+          <div class="col-md-6">
+            <p>
+              <% if current_user.following.include?(user.id) %>
+                <%= link_to "Following", unfollow_path(id: user.id), class: "btn btn-primary", id: "unfollow_btn" %>
+              <% else %>
+                <% if current_user.id != user.id %>
+                  <%= link_to "Follow", now_following_path(id: user.id), class: "btn btn-primary" %>
+                <% end %>
+              <% end %>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <%= link_to show_user_path(id: user.id) do %>
+            <h3><%= user.name %></h3>
+            <p>@<%= user.username %></p>
+          <% end %>
+          <p>
+            <%= user.bio %>
+          </p>
+        </div>
+        <div class="row">
+          <div class="profile-stats-container text-muted">
+            <div>
+              <p>Tweets</p>
+              <%= user.tweets.count %>
+            </div>
+            
+            <%= link_to following_path(id: user.id) do %>
+              <p>Following</p>
+              <%= user.following.length %>
+            <% end %>
+
+            <%= link_to followers_path(id: user.id) do %>
+              <p>Followers</p>
+              <%= get_users_followers(user) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

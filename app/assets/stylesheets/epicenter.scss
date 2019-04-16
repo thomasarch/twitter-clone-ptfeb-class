@@ -55,3 +55,14 @@
 	margin: 0 auto;
 	// width: 800px;
 }
+
+.follow-button {
+	width: 106px;
+	&:visited {
+		color: white;
+	}
+}
+
+// .user-card {
+// 	height: 400px;
+// }

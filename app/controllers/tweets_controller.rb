@@ -25,6 +25,12 @@ class TweetsController < ApplicationController
   def edit
   end
 
+  def retweet
+    @tweet = Tweet.new(user_id: current_user.id, retweet: params[:tweet_id])
+    @tweet.save
+    fail
+  end
+
   # POST /tweets
   # POST /tweets.json
   def create
@@ -76,5 +82,9 @@ class TweetsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
       params.require(:tweet).permit(:message, :user_id, :link)
+    end
+
+    def retweet_params
+      params.require(:tweet_id, :user_id)
     end
 end
