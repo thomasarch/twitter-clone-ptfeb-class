@@ -38,12 +38,11 @@
 
 			<div>
 			    <% @following_tweets.each do |tweet| %>
-			    	<% if tweet.retweet.nil? %>
-			    		<%= render 'layouts/tweet_card', tweet: tweet %>
-			    	<% else %>	
+			    	<% unless tweet.retweet.nil? %>
+			    		<% retweet_user = tweet.user %>
 			    		<% tweet = Tweet.find(tweet.retweet) %>
-			    		<%= render 'layouts/tweet_card', tweet: tweet %>
 					<% end %>
+			    	<%= render 'layouts/tweet_card', tweet: tweet, retweet_user: retweet_user %>
 			    <% end %>
 			</div>
 		</div>

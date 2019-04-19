@@ -26,9 +26,8 @@ class TweetsController < ApplicationController
   end
 
   def retweet
-    @tweet = Tweet.new(user_id: current_user.id, retweet: params[:tweet_id])
-    @tweet.save
-    fail
+    @tweet = Tweet.create(user_id: current_user.id, retweet: params[:tweet_id])
+    redirect_to root_path
   end
 
   # POST /tweets

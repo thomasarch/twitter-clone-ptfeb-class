@@ -1,15 +1,24 @@
 <div class="tweet-container">
   <div class="tweet-content">
+    <% unless retweet_user.nil? %>
+      <div class="text-muted">
+        ♺ <%= link_to retweet_user.name, show_user_path(id: retweet_user.id) %> retweeted
+      </div>
+    <% end %>
+
     <div class="tweet-heading">
       <%= image_tag profile_pic(tweet.user), size: 48, class: "profile-pic" %>
       <strong><%= link_to tweet.user.name, show_user_path(id: tweet.user.id) %></strong>
       <span class="check">✅</span> 
       <span class="text-muted">
         @<%= tweet.user.username %> 
-        • <%= time_ago_in_words(tweet.created_at) %>
+        • 
+        <%= time_ago_in_words(tweet.created_at) if Time.now - tweet.created_at < 86400 %>
+        <%= tweet.created_at.strftime('%b %e') if Time.now - tweet.created_at >= 86400 %>
+
       </span>
     </div>
     <p><%= tweet.message.html_safe %></p>
-    <!-- <p><%= link_to '♻︎', retweet_path(tweet_id: tweet.id) %></p> -->
+    <p><%= link_to '♻︎', retweet_path(tweet_id: tweet.id) %></p>
   </div>
 </div>

@@ -6,7 +6,7 @@ class Tweet < ApplicationRecord
 
     before_validation :link_check, on: :create
 
-    validates :message, presence: true
+    # validates :message, presence: true
     validates :message, length: {maximum: 140, too_long: "Max 140 characters"}, on: :create
 
     after_validation :apply_link, on: :create
@@ -16,29 +16,33 @@ class Tweet < ApplicationRecord
     private
 
     def link_check
-      if self.message.include?("http://") || self.message.include?("https://")
-        truncated_message = self.message.split.map do |word|
-          if word.include? "http"
-            self.link.push(word)
-            "#{word[0..20]}..."
-          else
-            word
+      if self.retweet.nil?
+        if self.message.include?("http://") || self.message.include?("https://")
+          truncated_message = self.message.split.map do |word|
+            if word.include? "http"
+              self.link.push(word)
+              "#{word[0..20]}..."
+            else
+              word
+            end
           end
+          self.message = truncated_message.join(' ')
         end
-        self.message = truncated_message.join(' ')
       end
     end
 
     def apply_link
-      if self.message.include?("http://") || self.message.include?("https://")
-        linked_message = self.message.split.map do |word|
-          if word.include? "http"
-            "<a href='#{self.link.shift}' target='_blank'>#{word}</a>"
-          else
-            word
+      if self.retweet.nil?
+        if self.message.include?("http://") || self.message.include?("https://")
+          linked_message = self.message.split.map do |word|
+            if word.include? "http"
+              "<a href='#{self.link.shift}' target='_blank'>#{word}</a>"
+            else
+              word
+            end
           end
+          self.message = linked_message.join(' ')
         end
-        self.message = linked_message.join(' ')
       end
     end
 end

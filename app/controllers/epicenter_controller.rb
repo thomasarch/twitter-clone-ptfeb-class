@@ -7,7 +7,10 @@ class EpicenterController < ApplicationController
 
   def feed
     @tweet = Tweet.new
-    @following_tweets = Tweet.where(user_id: current_user.following).order(created_at: :desc)
+    tweet_ids = current_user.following
+    tweet_ids.push(current_user.id)
+
+    @following_tweets = Tweet.where(user_id: tweet_ids).order(created_at: :desc)
   end
 
   def show_user
