@@ -14,4 +14,9 @@ module ApplicationHelper
       'default.png'
     end
   end
+
+  def who_to_follow
+    pick_three = (User.pluck(:id) - current_user.following).sample(3)
+    User.where(id: pick_three)
+  end
 end

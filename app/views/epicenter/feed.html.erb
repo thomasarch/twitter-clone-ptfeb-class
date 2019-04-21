@@ -1,37 +1,8 @@
 <% random_tweet %>
-	<div class="wrapper">
-		<div class="dashboard">
-			<div class="user-card">
-				<div></div>
-				<div class="profile-info-container">
-					<%= image_tag profile_pic(current_user), size: 72, class: 'profile-pic' %>
-					<div class="profile-names-container">
-						<div><strong><%= current_user.name %></strong></div>
-						<div class="text-muted">@<%= current_user.username %></div>
-					</div>
-					<div class="profile-stats-container text-muted">
-						<div>
-							<p>Tweets</p>
-							<%= current_user.tweets.count %>
-						</div>
-						
-						<%= link_to following_path(id: current_user.id) do %>
-							<p>Following</p>
-							<%= current_user.following.length %>
-						<% end %>
 
-						<%= link_to followers_path(id: current_user.id) do %>
-							<p>Followers</p>
-							<%= get_users_followers(current_user) %>
-						<% end %>
-						
-					</div>
- 				</div>
-			</div>
-		</div>
-
-
-		<div class="main">
+<div class="content-container">
+	<div class="main-container">
+		<div class="main-inner-container">
 			<div class="tweet-box">
 				<%= render 'tweets/form', tweet: @tweet %>
 			</div>
@@ -44,11 +15,17 @@
 					<% end %>
 			    	<%= render 'layouts/tweet_card', tweet: tweet, retweet_user: retweet_user %>
 			    <% end %>
-			</div>
+			</div>			
+		</div>
+	</div>
+
+	<div class="dashboard-container">
+		<div class="dashboard-left">
+			<%= render 'user_card', user: current_user %>
 		</div>
 		
-		<div class="dashboard dashboard-right">
-			hello again
+		<div class="dashboard-right">
+			<%= render 'who_to_follow' %>
 		</div>
 	</div>
 </div>

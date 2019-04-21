@@ -12,8 +12,8 @@ require 'yaml'
 def destroy_all
     User.destroy_all
     Tweet.destroy_all
-    # TweetTag.destroy_all
-    # Tag.destroy_all
+    TweetTag.destroy_all
+    Tag.destroy_all
     FileUtils.rm_rf(Dir['app/assets/images/autopics/*'])
     p 'everything is gone'
 end

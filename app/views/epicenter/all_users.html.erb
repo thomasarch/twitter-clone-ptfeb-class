@@ -1,2 +1,18 @@
 <h1>All Users</h1>
-<%= render 'user_list' %>
+
+<style>
+	.show-users {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.show-users > div {
+		margin: 12px;
+	}
+
+</style>
+<div class="show-users">
+	<% @users.each do |user| %>
+		<%= render 'user_card', user: user %>
+	<% end %>
+</div>

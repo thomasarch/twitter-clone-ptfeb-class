@@ -1,0 +1,18 @@
+<div class="who-to-follow-container">
+	
+	<h4>Who to follow</h4>
+
+	<% who_to_follow.each do |user| %>
+		<div class="info-container">
+	      <%= image_tag profile_pic(user), size: 48, class: "profile-pic" %>
+	      <div class="info-contents">
+		      <strong><%= link_to user.name, show_user_path(id: user.id) %></strong>
+		      <span class="check">✅</span> 
+		      <span class="text-muted">
+		        @<%= user.username %> </span><br>
+		      <div class="btn btn-success">Follow</div>
+	      </div>
+	    </div>
+	<% end %>	
+
+</div>

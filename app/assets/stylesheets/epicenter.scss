@@ -23,6 +23,7 @@
 }
 
 .user-card {
+	width: 288px;
 	background: white;
 	padding: 0 0 12px 0;
 }
@@ -63,6 +64,34 @@
 	}
 }
 
-// .user-card {
-// 	height: 400px;
-// }
+// who to follow
+.who-to-follow-container {
+	max-width: 288px;
+	padding-top: 12px;
+	& h4 {
+		margin: 0 12px;
+	}
+
+	& .info-container {
+		border-bottom: 1px solid #efefef;
+		padding: 12px;
+		white-space: nowrap;
+	}
+
+	& img {
+		position: absolute;
+
+	}
+
+	& .info-contents {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		position: relative;
+		padding-left: 56px;
+	}
+
+	& .btn {
+		margin: 8px 0;
+	}
+
+} 
